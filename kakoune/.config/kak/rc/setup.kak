@@ -5,7 +5,6 @@
 # ┆ # set global autoloadrc true                              ┆
 # ┆   : will find .kak files under rc/ and source them.       ┆
 # ╰───────────────────────────────────────────────────────────╯
-decl bool autoloadrc false
 eval %sh{
   if [[ "$kak_opt_autoloadrc" == "true" ]]; then
     find "$kak_config/rc" -type f | while read -r file; do
