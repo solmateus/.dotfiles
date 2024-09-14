@@ -1,0 +1,52 @@
+# ╭───────────────────────────────────────────────────────────╮╭─╮
+# │  ███████╗ ██████╗ ██╗       @solmateus           ©2024    ││&│
+# │  ██╔════╝██╔═══██╗██║       <solmateusbraga@gmail.com>    │╰─╯
+# │  ███████╗██║   ██║██║                                     │
+# │  ╚════██║██║   ██║██║       KAKOUNE                       │
+# │  ███████║╚██████╔╝███████╗  kakrc                         │
+# │  ╚══════╝ ╚═════╝ ╚══════╝                                │
+# ╰───────────────────────────────────────────────────────────╯
+# ╭───────────────────────────────────────────────────────────╮
+# │ & Reading                                                 │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ & A title or category.                                    ┆
+# ┆ @ A folder or module.                                     ┆
+# ┆                                                           ┆
+# ┆ > A feature     or subcategory                            ┆
+# ┆ : A description or information                            ┆
+# ┆ ! A warning     or dependency                             ┆
+# ┆ ? A problem     or error                                  ┆
+# ┆ % A todo        or wip                                    ┆
+# ┆ * Anything else                                           ┆
+# ╰───────────────────────────────────────────────────────────╯
+# ╭───────────────────────────────────────────────────────────╮
+# │ ! Dependencies                                            │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ $ kakoune                                                 ┆
+# ┆ $ xsel                                                    ┆
+# ╰───────────────────────────────────────────────────────────╯
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Setup : rc/setup.kak                                    │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Initializes important settings and commands.            ┆
+# ╰───────────────────────────────────────────────────────────╯
+# > Alias for sourcing files relative to '.config/kak/'.
+def load -params 1 %{ source "%val{config}/%arg{1}" }
+# > Loads setup module.
+load "rc/setup.kak"
+# > Set to true for auto-sourcing all '.kak' files inside the
+#   'rc/' folder.
+set global autoloadrc false
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Mappings : rc/mappings.kak                              │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Loads custom mappings.                                  ┆
+# ┆ % For better integration with modules, a new system shou- ┆
+# ┆   be implemented, where mappings are stored and remember- ┆
+# ┆   ed.                                                     ┆
+# ┆ ! requires 'xsel'                                         ┆
+# ╰───────────────────────────────────────────────────────────╯
+# > Loads mappings module.
+load "rc/mappings.kak"
