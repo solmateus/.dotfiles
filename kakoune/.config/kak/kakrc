@@ -33,11 +33,11 @@
 # ╰───────────────────────────────────────────────────────────╯
 # > Alias for sourcing files relative to '.config/kak/'.
 def load -params 1 %{ source "%val{config}/%arg{1}" }
-# > Loads setup module.
-load "rc/setup.kak"
 # > Set to true for auto-sourcing all '.kak' files inside the
 #   'rc/' folder.
-set global autoloadrc false
+decl bool autoloadrc false
+# > Loads setup module.
+load "rc/setup.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Oyster                                                  │
