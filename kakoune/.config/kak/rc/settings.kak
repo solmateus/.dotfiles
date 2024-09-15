@@ -4,6 +4,9 @@
 # ┆ : Changes solkak behavior.                                ┆
 # ╰───────────────────────────────────────────────────────────╯
 
+# : attempts to autoload every file in the rc directory
+decl bool autoloadrc false
+
 # : sets tab width to provided number 
 decl int  sol_tab_width                   2
 
@@ -32,7 +35,7 @@ decl bool sol_constant_write              false
 decl bool sol_show_whitespaces            true
 
 # : shows matching brackets
-decl bool sol_show_matching               false
+decl bool sol_show_matching               true
 
 # : shows numberline
-decl bool sol_show_numberline             false
+decl bool sol_show_numberline             true

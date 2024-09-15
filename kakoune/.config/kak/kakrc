@@ -26,19 +26,8 @@
 # ┆ $ xsel                                                    ┆
 # ╰───────────────────────────────────────────────────────────╯
 
-# ╭───────────────────────────────────────────────────────────╮
-# │ @ Setup : rc/setup.kak                                    │
-# ├───────────────────────────────────────────────────────────┤
-# ┆ : Initializes important settings and commands.            ┆
-# ╰───────────────────────────────────────────────────────────╯
 # > Alias for sourcing files relative to '.config/kak/'.
 def load -params 1 %{ source "%val{config}/%arg{1}" }
-
-# > Set to true for auto-sourcing all '.kak' files inside the
-#   'rc/' folder.
-decl bool autoloadrc false
-# > Loads setup module.
-load "rc/setup.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Settings : rc/settings.kak                              │
@@ -46,6 +35,17 @@ load "rc/setup.kak"
 # ┆ : Changes solkak behavior.                                ┆
 # ╰───────────────────────────────────────────────────────────╯
 load "rc/settings.kak"
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Setup : rc/setup.kak                                    │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Initializes important settings and commands.            ┆
+# ╰───────────────────────────────────────────────────────────╯
+
+# > Set to true for auto-sourcing all '.kak' files inside the
+#   'rc/' folder.
+# > Loads setup module.
+load "rc/setup.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Oyster : rc/oyster/oyster.kak                           │

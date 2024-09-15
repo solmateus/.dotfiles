@@ -11,21 +11,35 @@ perl %{ if ($ARGV[0] ne "") {
   kak "set global indentwidth $ARGV[0]";
 }} %opt{sol_tab_width}
 
-#   : scroll distance
-
+#   : disables clippy
 perl %{ if ($ARGV[0] ne "false") {
-  kak "set global scrolloff 6,12"
-}} %opt{sol_better_scrolloff}
+  kak "set global ui_options terminal_assistant=none"
+}} %opt{sol_disable_clippy}
 
 #   : removes kakoune greeting message
 perl %{ if ($ARGV[0] ne "false") {
   kak "set -remove global startup_info_version 20240518"
 }} %opt{sol_disable_greeting}
 
-#   : disables clippy
+#   : scroll distance
 perl %{ if ($ARGV[0] ne "false") {
-  kak "set global ui_options terminal_assistant=none"
-}} %opt{sol_disable_clippy}
+  kak "set global scrolloff 6,12"
+}} %opt{sol_better_scrolloff}
+
+#   : show matching brackets
+perl %{ if ($ARGV[0] ne "false") {
+  kak "add-highlighter global/ show-matching"
+}} %opt{sol_show_numberline}
+
+#   : show whitespaces
+perl %{ if ($ARGV[0] ne "false") {
+  kak "add-highlighter global/ show-whitespaces"
+}} %opt{sol_show_whitespaces}
+
+#   : show
+perl %{ if ($ARGV[0] ne "false") {
+  kak "add-highlighter global/number-lines number-lines -hlcursor"
+}} %opt{sol_show_numberline}
 
 # > commands
 #   : reload
