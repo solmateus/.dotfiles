@@ -33,6 +33,7 @@
 # ╰───────────────────────────────────────────────────────────╯
 # > Alias for sourcing files relative to '.config/kak/'.
 def load -params 1 %{ source "%val{config}/%arg{1}" }
+
 # > Set to true for auto-sourcing all '.kak' files inside the
 #   'rc/' folder.
 decl bool autoloadrc false
@@ -40,18 +41,33 @@ decl bool autoloadrc false
 load "rc/setup.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
-# │ @ Oyster                                                  │
+# │ @ Settings : rc/settings.kak                              │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Changes solkak behavior.                                ┆
+# ╰───────────────────────────────────────────────────────────╯
+load "rc/settings.kak"
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Oyster : rc/oyster/oyster.kak                           │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Adds perl scripting support to kakoune.                 ┆
 # ╰───────────────────────────────────────────────────────────╯
 load "rc/oyster/oyster.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
+# │ @ QOL : rc/qol.kak                                        │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Kakoune quality of life improvements.                   ┆
+# ┆ : Configurable through module @settings.                  ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global WinCreate .* %{ load "rc/qol.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
 # │ @ Buffers : rc/buffers.kak                                │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Adds useful buffer commands and options.                ┆
 # ╰───────────────────────────────────────────────────────────╯
-load "rc/buffers.kak"
+hook -once global WinCreate .* %{ load "rc/buffers.kak" }
  
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Mappings : rc/mappings.kak                              │
@@ -63,4 +79,4 @@ load "rc/buffers.kak"
 # ┆ ! requires 'xsel'                                         ┆
 # ╰───────────────────────────────────────────────────────────╯
 # > Loads mappings module.
-load "rc/mappings.kak"
+hook -once global WinCreate .* %{ load "rc/mappings.kak" }

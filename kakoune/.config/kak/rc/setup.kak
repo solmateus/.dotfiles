@@ -5,6 +5,7 @@
 # ┆ # set global autoloadrc true                              ┆
 # ┆   : will find .kak files under rc/ and source them.       ┆
 # ╰───────────────────────────────────────────────────────────╯
+
 eval %sh{
   if [[ "$kak_opt_autoloadrc" == "true" ]]; then
     find "$kak_config/rc" -type f | while read -r file; do
@@ -15,7 +16,3 @@ eval %sh{
   done
   fi
 }
-
-# TODO: % move this to a proper module.
-set global tabstop 2
-set global indentwidth 2 

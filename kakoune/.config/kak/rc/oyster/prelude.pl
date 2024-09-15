@@ -27,3 +27,8 @@ sub kak {
     # run it in kakoune
     print "$runner\n"
 }
+
+sub get_val {
+  my $result = `kak -p \$kak_session -eval 'echo %val(modified)'`;
+  debug "$result"
+}
