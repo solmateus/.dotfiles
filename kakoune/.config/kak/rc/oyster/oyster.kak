@@ -8,9 +8,15 @@
 hook global WinCreate .* %#
   require-module kak
   require-module perl
-  try %[ add-highlighter shared/kakrc/code/perl regex '(?:\s|\A)\Kperl(?:(?=\s)|\z)' 0:keyword ]
-  try %[ add-highlighter shared/kakrc/perl1 region -recurse '\{' '(^|\h)perl([\s{}\w%/$-|''"])* %\{\K' '\}' ref perl ]
+  try %~ add-highlighter shared/kakrc/code/perl regex '(?:\s|\A)\Kperl(?:(?=\s)|\z)' 0:keyword ~
+  try %~ add-highlighter shared/kakrc/perl1 region -recurse '\{' '(^|\h)perl([\s{}\w%/$-|''"])* %\{\K' '\}' ref perl ~
+  try %~ add-highlighter shared/kakrc/perl2 region -recurse '\[' '(^|\h)perl([\s{}\w%/$-|''"])* %\[\K' '\]' ref perl ~
+  try %~ add-highlighter shared/kakrc/perl3 region -recurse '\(' '(^|\h)perl([\s{}\w%/$-|''"])* %\(\K' '\)' ref perl ~
+  try %[ add-highlighter shared/kakrc/perl4 region -recurse '~' '(^|\h)perl([\s{}\w%/$-|''"])* %~\K' '~' ref perl ]
+  try %~ add-highlighter shared/kakrc/perl5 region -recurse '§' '(^|\h)perl([\s{}\w%/$-|''"])* %§\K' '§' ref perl ~
+
 #
+
 
 # > perl command to parse perl code
 def perl -params 1.. %{
@@ -36,4 +42,3 @@ def perl-debug -params 1.. %{ perl %{
     debug "param: $arg\n";
   }
 } %arg{@} }
-
