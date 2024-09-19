@@ -13,6 +13,7 @@ hook global WinCreate .* %#
   try %~ add-highlighter shared/kakrc/perl2 region -recurse '\[' '(^|\h)perl([\s{}\w%/$-|''"])* %\[\K' '\]' ref perl ~
   try %~ add-highlighter shared/kakrc/perl3 region -recurse '\(' '(^|\h)perl([\s{}\w%/$-|''"])* %\(\K' '\)' ref perl ~
   try %[ add-highlighter shared/kakrc/perl4 region -recurse '~' '(^|\h)perl([\s{}\w%/$-|''"])* %~\K' '~' ref perl ]
+  try %[ add-highlighter shared/kakrc/perl4 region -recurse '<' '(^|\h)perl([\s{}\w%/$-|''"])* %<\K' '>' ref perl ]
   try %~ add-highlighter shared/kakrc/perl5 region -recurse '§' '(^|\h)perl([\s{}\w%/$-|''"])* %§\K' '§' ref perl ~
 
 #
