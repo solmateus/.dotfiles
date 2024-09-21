@@ -36,18 +36,34 @@ perl %{ if ($ARGV[0] ne "false") {
   kak "add-highlighter global/ show-whitespaces"
 }} %opt{sol_show_whitespaces}
 
-#   : show
+#   : show numberline
 perl %{ if ($ARGV[0] ne "false") {
   kak "add-highlighter global/number-lines number-lines -hlcursor"
 }} %opt{sol_show_numberline}
 
 # > commands
 #   : reload
-def reload %{
-    colorscheme "%opt{theme}"
-    # % TODO: update rulers (if rulers module is active)
-    # % TODO: apply default colors (if a sol theme is active)
+def hook_reload_with_solthemes %{
+  def reload %{
+    #colorscheme "%opt{theme}"
+    apply_normal_accent
+  }
 }
+
+def hook_reload_without_solthemes %{
+  def reload %{
+    #colorscheme "%opt{theme}"
+    #apply_normal_accent
+  }
+}
+
+perl %{ if ($ARGV[0] ne "false") {
+		kak "hook_reload_with_solthemes"
+  } else {
+    kak "hook_reload_without_solthemes"
+  }
+} %opt{sol_use_solthemes}
+
 
 #   : escape
 def escape %{
@@ -119,3 +135,14 @@ perl %{
   if ($ARGV[0] eq "true") { kak "hook_constant_write" }
 } %opt{sol_constant_write}
 
+
+#    : highlight kakoune aliases
+try %~
+  add-highlighter shared/kakrc/code/addhl regex '(?:\s|\A)\Kaddhl(?:(?=\s)|\z)' 0:keyword
+  add-highlighter shared/kakrc/code/rmhl  regex '(?:\s|\A)\Krmhl(?:(?=\s)|\z)'  0:keyword
+  add-highlighter shared/kakrc/code/def   regex '(?:\s|\A)\Kdef(?:(?=\s)|\z)'   0:keyword
+  add-highlighter shared/kakrc/code/face  regex '(?:\s|\A)\Kface(?:(?=\s)|\z)'  0:keyword
+  add-highlighter shared/kakrc/code/set   regex '(?:\s|\A)\Kset(?:(?=\s)|\z)'   0:keyword
+  add-highlighter shared/kakrc/code/decl  regex '(?:\s|\A)\Kdecl(?:(?=\s)|\z)'  0:keyword
+  add-highlighter shared/kakrc/code/load  regex '(?:\s|\A)\Kload(?:(?=\s)|\z)'  0:keyword
+~
