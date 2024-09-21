@@ -7,13 +7,16 @@
 decl str _black  "0F1014"
 decl str _dgray3 "1c1e20"
 decl str _dgray2 "2c2e30"
-decl str _dgray1  "959695"
+decl str _dgray1 "959695"
 decl str _lgray  "c4c7c5"
 decl str _white  "fefefe"
 decl str _red    "cb333a"
+decl str _dred   "d8595f"
 decl str _green  "188743"
+decl str _dgreen "3d9b61"
 decl str _yellow "faa821"
 decl str _blue   "3870ed"
+decl str _dblue  "7ea4f8"
 decl str _teal   "007F7F"
 decl str _pink   "dc25b6"
 
@@ -28,6 +31,9 @@ decl str StatusLineForeground "%opt{_white}"
 decl str NormalAccent "%opt{_blue}"
 decl str InsertAccent "%opt{_green}"
 decl str PromptAccent "%opt{_red}"
+decl str NormalAccentLight "%opt{_dblue}"
+decl str InsertAccentLight "%opt{_dgreen}"
+decl str PromptAccentLight "%opt{_dred}"
 
 decl str NormalStatusLine '{rgb:%opt{NormalAccent},rgb:%opt{StatusLineBackground}}{rgb:%opt{Background},rgb:%opt{NormalAccent}+b}  %val{cursor_line}:%val{cursor_char_column}  %val{bufname}  {rgb:%opt{Background},rgb:%opt{NormalAccent}+bi}kak  '
 decl str InsertStatusLine '{rgb:%opt{InsertAccent},rgb:%opt{StatusLineBackground}}{rgb:%opt{Background},rgb:%opt{InsertAccent}+b}  %val{cursor_line}:%val{cursor_char_column}  %val{bufname}  {rgb:%opt{Background},rgb:%opt{InsertAccent}+bi}kak  '
@@ -41,10 +47,10 @@ face global PrimaryCursor          "rgb:%opt{NormalAccent}+rb"
 face global PrimaryCursorEolNormal "rgba:%opt{NormalAccent}99,rgb:%opt{InsertAccent}+rb"
 face global PrimaryCursorEolInsert "rgba:%opt{InsertAccent}99+rb"
 face global PrimaryCursorEolPrompt "rgba:%opt{PromptAccent}99+rb"
-face global PrimaryCursorEol       "rgba:%opt{NormalAccent}99,rgb:%opt{InsertAccent}+rb"
+face global PrimaryCursorEol       "rgb:%opt{NormalAccentLight},rgb:%opt{InsertAccent}+rb"
 
-face global SecondaryCursor        "rgba:%opt{NormalAccent}95+rb"
-face global SecondaryCursorEol     "rgba:%opt{NormalAccent}95+rb"
+face global SecondaryCursor        "rgb:%opt{NormalAccentLight}+rb"
+face global SecondaryCursorEol     "rgb:%opt{NormalAccentLight}+rb"
 
 # : sets selection colors
 face global PrimarySelection       "default,rgba:%opt{NormalAccent}80+i"
@@ -54,38 +60,38 @@ face global SecondarySelection     "default,rgba:%opt{NormalAccent}50+i"
 set   global modelinefmt            "%opt{NormalStatusLine}"
 
 # : SOL PLUGINS
-decl str SolRulers _dgray1
+decl str SolRulers "%opt{_dgray1}"
 
 # ! SOL COMMANDS : Do not change this.
 def apply_normal_accent %{
-  face global PrimaryCursor PrimaryCursorNormal
-  face global PrimaryCursorEol PrimaryCursorEolNormal
-  face global LineNumberCursor "rgb:%opt{Background},rgb:%opt{NormalAccent},default+b"
-  set  global modelinefmt "%opt{NormalStatusLine}"
-  face global SecondaryCursor "rgba:%opt{NormalAccent}95+rb"
-  face global PrimarySelection "default,rgba:%opt{NormalAccent}80+i"
+  face global PrimaryCursor      PrimaryCursorNormal
+  face global PrimaryCursorEol   PrimaryCursorEolNormal
+  face global LineNumberCursor   "rgb:%opt{Background},rgb:%opt{NormalAccent},default+b"
+  set  global modelinefmt        "%opt{NormalStatusLine}"
+  face global SecondaryCursor    "rgb:%opt{NormalAccentLight}+rb"
+  face global PrimarySelection   "default,rgba:%opt{NormalAccent}80+i"
   face global SecondarySelection "default,rgba:%opt{NormalAccent}50+i"
 }
 
 def apply_insert_accent %{
   echo -markup "{rgb:%opt{_black},rgb:%opt{InsertAccent}+b}    INSERT    {rgb:%opt{StatusLineBackground},rgb:%opt{InsertAccent}+b}"
-  face global PrimaryCursor PrimaryCursorInsert
-  face global PrimaryCursorEol PrimaryCursorEolInsert
-  face global LineNumberCursor "rgb:%opt{Background},rgb:%opt{InsertAccent},default+b"
-  set  global modelinefmt "%opt{InsertStatusLine}"
-  face global SecondaryCursor "rgba:%opt{InsertAccent}95+rb"
-  face global PrimarySelection       "default,rgba:%opt{InsertAccent}80+i"
-  face global SecondarySelection     "default,rgba:%opt{InsertAccent}50+i"
+  face global PrimaryCursor      PrimaryCursorInsert
+  face global PrimaryCursorEol   PrimaryCursorEolInsert
+  face global LineNumberCursor   "rgb:%opt{Background},rgb:%opt{InsertAccent},default+b"
+  set  global modelinefmt        "%opt{InsertStatusLine}"
+  face global SecondaryCursor    "rgb:%opt{InsertAccentLight}+rb"
+  face global PrimarySelection   "default,rgba:%opt{InsertAccent}80+i"
+  face global SecondarySelection "default,rgba:%opt{InsertAccent}50+i"
 }
 
 def apply_prompt_accent %{
-  face global PrimaryCursor PrimaryCursorPrompt
-  face global PrimaryCursorEol PrimaryCursorEolPrompt
-  face global LineNumberCursor "rgb:%opt{Background},rgb:%opt{PromptAccent},default+b"
-  set  global modelinefmt "%opt{PromptStatusLine}"
-  face global SecondaryCursor "rgba:%opt{PromptAccent}95+rb"
-  face global PrimarySelection       "default,rgba:%opt{PromptAccent}80+i"
-  face global SecondarySelection     "default,rgba:%opt{PromptAccent}50+i"
+  face global PrimaryCursor      PrimaryCursorPrompt
+  face global PrimaryCursorEol   PrimaryCursorEolPrompt
+  face global LineNumberCursor   "rgb:%opt{Background},rgb:%opt{PromptAccent},default+b"
+  set  global modelinefmt        "%opt{PromptStatusLine}"
+  face global SecondaryCursor    "rgb:%opt{PromptAccentLight}+rb"
+  face global PrimarySelection   "default,rgba:%opt{PromptAccent}80+i"
+  face global SecondarySelection "default,rgba:%opt{PromptAccent}50+i"
 }
 
 # : hook: entering insert mode applies insert accent
