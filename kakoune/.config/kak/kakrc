@@ -80,3 +80,10 @@ hook -once global WinCreate .* %{ load "rc/buffers.kak" }
 # ╰───────────────────────────────────────────────────────────╯
 # > Loads mappings module.
 hook -once global WinCreate .* %{ load "rc/mappings.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Themes : rc/themes.kak                                  │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Main logic for themes.                                  ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global WinCreate .* %{ load "rc/themes.kak" }
