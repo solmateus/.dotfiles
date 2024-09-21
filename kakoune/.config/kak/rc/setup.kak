@@ -7,7 +7,7 @@
 # ╰───────────────────────────────────────────────────────────╯
 
 eval %sh{
-  if [[ "$kak_opt_autoloadrc" == "true" ]]; then
+  if [[ "$kak_opt_sol_autoloadrc" == "true" ]]; then
     find "$kak_config/rc" -type f | while read -r file; do
     if [[ "$file" == *.kak && "$file" != */rc/setup.kak ]]; then
       echo "echo -debug %{:: sourcing '$file'}"
