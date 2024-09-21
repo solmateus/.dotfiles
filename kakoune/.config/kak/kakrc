@@ -86,4 +86,12 @@ hook -once global WinCreate .* %{ load "rc/mappings.kak" }
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Main logic for themes.                                  ┆
 # ╰───────────────────────────────────────────────────────────╯
-hook -once global WinCreate .* %{ load "rc/themes.kak" }
+#hook -once global WinCreate .* %{ load "rc/themes.kak" }
+load "rc/themes.kak"
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Rulers : rc/rulers.kak                                  │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Customizable rulers for kakoune.                        ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global WinCreate .* %{ load "rc/rulers.kak" }
