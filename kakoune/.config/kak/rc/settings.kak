@@ -4,8 +4,14 @@
 # ┆ : Changes solkak behavior.                                ┆
 # ╰───────────────────────────────────────────────────────────╯
 
+# : use custom solthemes instead of plain colorscheme
+decl bool sol_use_solthemes              true
+
+# : sets theme from themes/ folder.
+decl str theme                           "base"
+
 # : attempts to autoload every file in the rc directory
-decl bool autoloadrc false
+decl bool sol_autoloadrc                 false
 
 # : sets tab width to provided number 
 decl int  sol_tab_width                   2
@@ -32,7 +38,7 @@ decl str  sol_escape_alias                "jk"
 decl bool sol_constant_write              false
 
 # : shows whitespaces such as spaces and new lines
-decl bool sol_show_whitespaces            true
+decl bool sol_show_whitespaces            false
 
 # : shows matching brackets
 decl bool sol_show_matching               true
