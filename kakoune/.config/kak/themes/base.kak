@@ -187,7 +187,7 @@ face global LineFlagHint           "rgb:%opt{_green}"
 face global DiagnosticWarning      "default,default,rgb:%opt{_dgray1}+c"
 face global DiagnosticInfo         "default,default,rgb:%opt{_blue}+c"
 face global DiagnosticHint         "default,default,rgb:%opt{_green}+c"
-
+# : info boxes
 face global InfoDefault Information
 face global InfoBlock block
 face global InfoBlockQuote block
