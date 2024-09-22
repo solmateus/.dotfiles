@@ -41,10 +41,6 @@ load "rc/settings.kak"
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Initializes important settings and commands.            ┆
 # ╰───────────────────────────────────────────────────────────╯
-
-# > Set to true for auto-sourcing all '.kak' files inside the
-#   'rc/' folder.
-# > Loads setup module.
 load "rc/setup.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
@@ -82,16 +78,15 @@ hook -once global WinCreate .* %{ load "rc/buffers.kak" }
 hook -once global WinCreate .* %{ load "rc/mappings.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
-# │ @ Themes : rc/themes.kak                                  │
-# ├───────────────────────────────────────────────────────────┤
-# ┆ : Main logic for themes.                                  ┆
-# ╰───────────────────────────────────────────────────────────╯
-#hook -once global WinCreate .* %{ load "rc/themes.kak" }
-load "rc/themes.kak"
-
-# ╭───────────────────────────────────────────────────────────╮
 # │ @ Rulers : rc/rulers.kak                                  │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Customizable rulers for kakoune.                        ┆
 # ╰───────────────────────────────────────────────────────────╯
 hook -once global WinCreate .* %{ load "rc/rulers.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Themes : rc/themes.kak                                  │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Main logic for themes.                                  ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global WinCreate .* %{ load "rc/themes.kak" }

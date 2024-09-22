@@ -45,3 +45,9 @@ decl bool sol_show_matching               true
 
 # : shows numberline
 decl bool sol_show_numberline             true
+
+# : rulers module
+decl int  sol_special_column              80
+decl bool sol_highlight_current_line      true
+decl bool sol_highlight_current_column    false
+decl bool sol_highlight_special_column    true

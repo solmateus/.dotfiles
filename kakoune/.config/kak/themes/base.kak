@@ -60,7 +60,9 @@ face global SecondarySelection     "default,rgba:%opt{NormalAccent}50+i"
 set   global modelinefmt            "%opt{NormalStatusLine}"
 
 # : SOL PLUGINS
-decl str SolRulers "%opt{_dgray1}"
+face global RulersRow "default,rgb:%opt{_dgray3},default"
+face global RulersCol "default,rgb:%opt{_dgray3},default"
+face global RulersSpc "default,rgb:%opt{_dgray3},default"
 
 # ! SOL COMMANDS : Do not change this.
 def apply_normal_accent %{
