@@ -10,21 +10,16 @@ face global RulersSpc "default,default,default+r"
 perl %{
   my $update_command = "def rulers-update %{\n";
   if ($ARGV[0] ne "false") {
-    debug "highlight current line";
     $update_command = $update_command . "  try %{ rmhl window/rulers_row }\n" . "  addhl window/rulers_row line %val{cursor_line} RulersRow\n";
   }
   if ($ARGV[1] ne "false") {
-    debug "highlight current column";
     $update_command = $update_command . "  try %{ rmhl window/rulers_col }\n" . "  addhl window/rulers_col column %val{cursor_display_column} RulersCol\n";
   }
   if ($ARGV[2] ne "false") {
-    debug "highlight special column";
     $update_command = $update_command . "  try %{ rmhl window/rulers_spc }\n" . "  addhl window/rulers_spc column %opt{sol_special_column} RulersSpc\n";
   }
  
   $update_command = $update_command . "}";
-
-  debug "COMMAND:\n$update_command\n";
 
   kak "$update_command";
   kak "hook global -group rulers RawKey .+ %{ rulers-update }";
