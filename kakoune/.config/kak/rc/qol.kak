@@ -47,6 +47,7 @@ def hook_reload_with_solthemes %{
   def reload %{
     #colorscheme "%opt{theme}"
     apply_normal_accent
+    echo ""
   }
 }
 
@@ -67,7 +68,7 @@ perl %{ if ($ARGV[0] ne "false") {
 
 #   : escape
 def escape %{
-    exec "<esc>,;"
+    exec "<esc>"
     try %{ reload }
 }
 
