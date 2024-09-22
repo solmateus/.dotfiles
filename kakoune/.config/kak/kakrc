@@ -93,6 +93,13 @@ hook -once global WinCreate .* %{ load "rc/rulers.kak" }
 # ╰───────────────────────────────────────────────────────────╯
 load "rc/dragx.kak"
 
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ SelSur : rc/selsur.kak                                  │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Unifies <a-i> <a-a> and m selection/surrounding.        ┆
+# ┆ : Fork of h-youhei/kakoune-surround.kak                   ┆
+# ╰───────────────────────────────────────────────────────────╯
+load "rc/selsur.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Themes : rc/themes.kak                                  │
