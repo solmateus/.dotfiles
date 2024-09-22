@@ -44,16 +44,16 @@ face global PrimaryCursorNormal    "rgb:%opt{NormalAccent}+rb"
 face global PrimaryCursorInsert    "rgb:%opt{InsertAccent}+rb"
 face global PrimaryCursorPrompt    "rgb:%opt{PromptAccent}+rb"
 face global PrimaryCursor          "rgb:%opt{NormalAccent}+rb"
-face global PrimaryCursorEolNormal "rgba:%opt{NormalAccent}99,rgb:%opt{InsertAccent}+rb"
-face global PrimaryCursorEolInsert "rgba:%opt{InsertAccent}99+rb"
-face global PrimaryCursorEolPrompt "rgba:%opt{PromptAccent}99+rb"
+face global PrimaryCursorEolNormal "rgb:%opt{NormalAccent},rgb:%opt{InsertAccent}+rb"
+face global PrimaryCursorEolInsert "rgb:%opt{InsertAccent}+rb"
+face global PrimaryCursorEolPrompt "rgb:%opt{PromptAccent}+rb"
 face global PrimaryCursorEol       "rgb:%opt{NormalAccentLight},rgb:%opt{InsertAccent}+rb"
 
 face global SecondaryCursor        "rgb:%opt{NormalAccentLight}+rb"
 face global SecondaryCursorEol     "rgb:%opt{NormalAccentLight}+rb"
 
 # : sets selection colors
-face global PrimarySelection       "default,rgba:%opt{NormalAccent}80+i"
+face global PrimarySelection       "default,rgba:%opt{NormalAccent}90+i"
 face global SecondarySelection     "default,rgba:%opt{NormalAccent}50+i"
 
 # : sets default statusline
@@ -71,7 +71,7 @@ def apply_normal_accent %{
   face global LineNumberCursor   "rgb:%opt{Background},rgb:%opt{NormalAccent},default+b"
   set  global modelinefmt        "%opt{NormalStatusLine}"
   face global SecondaryCursor    "rgb:%opt{NormalAccentLight}+rb"
-  face global PrimarySelection   "default,rgba:%opt{NormalAccent}80+i"
+  face global PrimarySelection   "default,rgba:%opt{NormalAccent}90+i"
   face global SecondarySelection "default,rgba:%opt{NormalAccent}50+i"
 }
 
@@ -82,7 +82,7 @@ def apply_insert_accent %{
   face global LineNumberCursor   "rgb:%opt{Background},rgb:%opt{InsertAccent},default+b"
   set  global modelinefmt        "%opt{InsertStatusLine}"
   face global SecondaryCursor    "rgb:%opt{InsertAccentLight}+rb"
-  face global PrimarySelection   "default,rgba:%opt{InsertAccent}80+i"
+  face global PrimarySelection   "default,rgba:%opt{InsertAccent}90+i"
   face global SecondarySelection "default,rgba:%opt{InsertAccent}50+i"
 }
 
@@ -92,7 +92,7 @@ def apply_prompt_accent %{
   face global LineNumberCursor   "rgb:%opt{Background},rgb:%opt{PromptAccent},default+b"
   set  global modelinefmt        "%opt{PromptStatusLine}"
   face global SecondaryCursor    "rgb:%opt{PromptAccentLight}+rb"
-  face global PrimarySelection   "default,rgba:%opt{PromptAccent}80+i"
+  face global PrimarySelection   "default,rgba:%opt{PromptAccent}90+i"
   face global SecondarySelection "default,rgba:%opt{PromptAccent}50+i"
 }
 
