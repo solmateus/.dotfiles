@@ -126,7 +126,7 @@ hook global PromptIdle .* %{
 # > BUILTINS
 face global LineNumbers        "rgb:%opt{_dgray2},rgb:%opt{_black}"
 face global LineNumberCursor   "rgb:%opt{_black},rgb:%opt{NormalAccent}"
-face global LineNumbersWrapped "rgb:%opt{_dgray1},rgb:%opt{_lgray}" 
+face global LineNumbersWrapped "rgb:%opt{_dgray3},rgb:%opt{_black}" 
 face global Default            "rgb:%opt{_white},rgb:%opt{_black}"
 face global MenuForeground     "rgb:%opt{_white},rgb:%opt{_dgray2}"
 face global MenuBackground     "rgb:%opt{_dgray2},rgb:%opt{_dgray1}"
