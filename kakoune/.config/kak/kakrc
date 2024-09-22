@@ -81,6 +81,7 @@ hook -once global WinCreate .* %{ load "rc/mappings.kak" }
 # │ @ Rulers : rc/rulers.kak                                  │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Customizable rulers for kakoune.                        ┆
+# ┆ : Supports currten line and column and a special column.  ┆
 # ╰───────────────────────────────────────────────────────────╯
 hook -once global WinCreate .* %{ load "rc/rulers.kak" }
 
