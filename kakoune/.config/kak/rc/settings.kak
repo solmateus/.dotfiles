@@ -8,7 +8,7 @@
 decl bool sol_use_solthemes              true
 
 # : sets theme from themes/ folder.
-decl str theme                           "base"
+decl str theme                           "catastrophy"
 
 # : attempts to autoload every file in the rc directory
 decl bool sol_autoloadrc                 false
