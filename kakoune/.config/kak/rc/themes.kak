@@ -5,4 +5,8 @@
 # ╰───────────────────────────────────────────────────────────╯
 
 # > loads theme
-load "themes/%opt{theme}.kak"
+perl %{
+  if ($ARGV[0] ne "false") {
+    kak "load \"themes/%opt{theme}.kak\""
+  }
+} %opt{sol_use_solthemes}
