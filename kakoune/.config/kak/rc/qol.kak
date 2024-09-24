@@ -43,18 +43,16 @@ perl %{ if ($ARGV[0] ne "false") {
 
 # > commands
 #   : reload
-def hook_reload_with_solthemes %{
+def -hidden hook_reload_with_solthemes %{
   def reload %{
     #colorscheme "%opt{theme}"
-    apply_normal_accent
-    echo ""
+    theme-apply-normal-colors
   }
 }
 
-def hook_reload_without_solthemes %{
+def -hidden hook_reload_without_solthemes %{
   def reload %{
     #colorscheme "%opt{theme}"
-    #apply_normal_accent
   }
 }
 
@@ -81,7 +79,7 @@ def write-delete-buffer %{
 }
 
 # > hooks
-#   : [sol_escape_alias, default 'jk'] leaves insert mode
+# : [sol_escape_alias, default 'jk'] leaves insert mode
 hook global InsertChar "[%opt{sol_escape_alias}]" %{
   try %{
     exec -draft "hH<a-k>jk<ret>d"
