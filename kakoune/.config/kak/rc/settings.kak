@@ -10,6 +10,9 @@ decl bool sol_use_solthemes              true
 # : sets theme from themes/ folder.
 decl str theme                           "catastrophy"
 
+# : starts kak-tree-sitter with kakoune
+decl str sol_use_tree_sitter             true
+
 # : attempts to autoload every file in the rc directory
 decl bool sol_autoloadrc                 false
 

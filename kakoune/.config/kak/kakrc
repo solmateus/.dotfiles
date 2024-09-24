@@ -30,6 +30,13 @@
 def load -params 1 %{ source "%val{config}/%arg{1}" }
 
 # ╭───────────────────────────────────────────────────────────╮
+# │ @ Oyster : rc/oyster/oyster.kak                           │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Adds perl scripting support to kakoune.                 ┆
+# ╰───────────────────────────────────────────────────────────╯
+load "rc/oyster/oyster.kak"
+
+# ╭───────────────────────────────────────────────────────────╮
 # │ @ Settings : rc/settings.kak                              │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Changes solkak behavior.                                ┆
@@ -40,15 +47,16 @@ load "rc/settings.kak"
 # │ @ Setup : rc/setup.kak                                    │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Initializes important settings and commands.            ┆
+# ┆ : Initializes plug.kak.                                   ┆
 # ╰───────────────────────────────────────────────────────────╯
 load "rc/setup.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
-# │ @ Oyster : rc/oyster/oyster.kak                           │
+# │ @ Tree-Sitter : rc/tree-sitter.kak ! plug.kak             │
 # ├───────────────────────────────────────────────────────────┤
-# ┆ : Adds perl scripting support to kakoune.                 ┆
+# ┆ : Adds tree-sitter support to kakoune and themes.         ┆
 # ╰───────────────────────────────────────────────────────────╯
-load "rc/oyster/oyster.kak"
+hook -once global WinCreate .* %{ load "rc/tree-sitter.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ QOL : rc/qol.kak                                        │
@@ -56,14 +64,14 @@ load "rc/oyster/oyster.kak"
 # ┆ : Kakoune quality of life improvements.                   ┆
 # ┆ : Configurable through module @settings.                  ┆
 # ╰───────────────────────────────────────────────────────────╯
-hook -once global WinCreate .* %{ load "rc/qol.kak" }
+hook -once global KakBegin .* %{ load "rc/qol.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Buffers : rc/buffers.kak                                │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Adds useful buffer commands and options.                ┆
 # ╰───────────────────────────────────────────────────────────╯
-hook -once global WinCreate .* %{ load "rc/buffers.kak" }
+hook -once global KakBegin .* %{ load "rc/buffers.kak" }
  
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Mappings : rc/mappings.kak                              │
@@ -75,7 +83,7 @@ hook -once global WinCreate .* %{ load "rc/buffers.kak" }
 # ┆ ! requires 'xsel'                                         ┆
 # ╰───────────────────────────────────────────────────────────╯
 # > Loads mappings module.
-hook -once global WinCreate .* %{ load "rc/mappings.kak" }
+hook -once global KakBegin .* %{ load "rc/mappings.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Rulers : rc/rulers.kak                                  │
@@ -91,7 +99,7 @@ hook -once global WinCreate .* %{ load "rc/rulers.kak" }
 # ┆ : 'X' and 'x' selects line and drags selection up/down.   ┆
 # ┆ : Fork of evanrelf/byline.kak                             ┆
 # ╰───────────────────────────────────────────────────────────╯
-load "rc/dragx.kak"
+hook -once global KakBegin .* %{ load "rc/dragx.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ SelSur : rc/selsur.kak                                  │
@@ -99,7 +107,7 @@ load "rc/dragx.kak"
 # ┆ : Unifies <a-i> <a-a> and m selection/surrounding.        ┆
 # ┆ : Fork of h-youhei/kakoune-surround.kak                   ┆
 # ╰───────────────────────────────────────────────────────────╯
-load "rc/selsur.kak"
+hook -once global KakBegin .* %{ load "rc/selsur.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Themes : rc/themes.kak                                  │
