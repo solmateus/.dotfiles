@@ -56,7 +56,14 @@ load "rc/setup.kak"
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Adds tree-sitter support to kakoune and themes.         ┆
 # ╰───────────────────────────────────────────────────────────╯
-hook -once global WinCreate .* %{ load "rc/tree-sitter.kak" }
+hook -once global KakBegin .* %{ load "rc/tree-sitter.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ LSP : rc/lsp.kak ! plug.kak                             │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Adds lsp support to kakoune and themes.                 ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global KakBegin .* %{ load "rc/lsp.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ QOL : rc/qol.kak                                        │

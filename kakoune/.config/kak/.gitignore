@@ -1,2 +1,4 @@
 # IGNORE
 plugins/plug.kak/*
+plugins/kakoune-lsp
+plugins/.build
