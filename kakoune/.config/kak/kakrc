@@ -52,18 +52,18 @@ load "rc/settings.kak"
 load "rc/setup.kak"
 
 # ╭───────────────────────────────────────────────────────────╮
-# │ @ Tree-Sitter : rc/tree-sitter.kak ! plug.kak             │
-# ├───────────────────────────────────────────────────────────┤
-# ┆ : Adds tree-sitter support to kakoune and themes.         ┆
-# ╰───────────────────────────────────────────────────────────╯
-hook -once global KakBegin .* %{ load "rc/tree-sitter.kak" }
-
-# ╭───────────────────────────────────────────────────────────╮
 # │ @ LSP : rc/lsp.kak ! plug.kak                             │
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Adds lsp support to kakoune and themes.                 ┆
 # ╰───────────────────────────────────────────────────────────╯
 hook -once global KakBegin .* %{ load "rc/lsp.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Tree-Sitter : rc/tree-sitter.kak ! plug.kak             │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Adds tree-sitter support to kakoune and themes.         ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global KakBegin .* %{ load "rc/tree-sitter.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ QOL : rc/qol.kak                                        │

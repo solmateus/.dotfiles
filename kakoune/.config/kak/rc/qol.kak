@@ -45,14 +45,16 @@ perl %{ if ($ARGV[0] ne "false") {
 #   : reload
 def -hidden hook_reload_with_solthemes %{
   def reload %{
-    #colorscheme "%opt{theme}"
     theme-apply-normal-colors
+    # ticks lsp to display inlay hints
+    try %{ lsp-did-save }
   }
 }
 
 def -hidden hook_reload_without_solthemes %{
   def reload %{
-    #colorscheme "%opt{theme}"
+    # ticks lsp to display inlay hints
+    try %{ lsp-did-save }
   }
 }
 
