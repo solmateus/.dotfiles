@@ -10,6 +10,9 @@
 # ╭───────────────────────────────────────────────────────────╮
 # │ > Normal                                                  │
 # ╰───────────────────────────────────────────────────────────╯
+map -docstring "yanks to system clipboard" global normal 'Y' \
+  "<a-|>xsel --input --clipboard<ret><a-;>:echo 'yanked selections to system clipboard'<ret>"
+
 unmap global normal q
 unmap global normal Q
 map global normal q z
@@ -132,7 +135,6 @@ map -docstring "LSP errors"                      global object D     \
 # │ > NORMAL                                                  │
 # ╰───────────────────────────────────────────────────────────╯
 # > 'y' copies selections to system clipboard through 'xsel'.
-map global user 'y' '<a-|>sudo -u sol xsel --input --clipboard<ret>'
 
 # > '<esc>' calls qol escape command
 map global insert <esc> "<a-;>:escape<ret>"
