@@ -32,3 +32,5 @@ sub get_val {
   my $result = `kak -p \$kak_session -eval 'echo %val(modified)'`;
   debug "$result"
 }
+
+1;

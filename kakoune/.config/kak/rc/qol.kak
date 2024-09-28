@@ -6,7 +6,7 @@
 
 # > options
 #   : set tab width
-perl %{ if ($ARGV[0] ne "") {
+perl %{ if ($ARGV[0] ne "false") {
   kak "set global tabstop $ARGV[0]";
   kak "set global indentwidth $ARGV[0]";
 }} %opt{sol_tab_width}
@@ -59,7 +59,7 @@ def -hidden hook_reload_without_solthemes %{
 }
 
 perl %{ if ($ARGV[0] ne "false") {
-		kak "hook_reload_with_solthemes"
+  kak "hook_reload_with_solthemes"
   } else {
     kak "hook_reload_without_solthemes"
   }

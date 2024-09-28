@@ -19,19 +19,19 @@ hook global WinCreate .* %#
 #
 
 
-# > perl command to parse perl code
 def perl -params 1.. %{
-  require-module kak
-  eval %sh{
-    # Read the contents of the prelude file
-    prelude=$(cat "$kak_config/rc/oyster/prelude.pl")
-    # Combine the prelude and the provided Perl code
-    perl_code=$(printf '%s\n%s' "$prelude" "$1")
-    # Shift the first argument (the Perl code)
-    shift
-    # Execute the combined Perl code
-    perl -e "$perl_code" "$@"
-  }
+    eval %sh{
+        # Encode the command and arguments using base64
+        command=$(echo -n "$1" | base64 -w 0)
+        shift
+        args=$(for arg in "$@"; do echo -n "$arg" | base64 -w 0; echo -n ' '; done)
+        
+        # Combine encoded command and arguments
+        data=$(printf '%s\n%s' "$command" "$args")
+        
+        # Send the data to the server and get the result
+        echo "$data" | socat - UNIX-CONNECT:/tmp/kak_oyster.sock
+    }
 }
 
 # > example usage of oyster.kak
@@ -40,6 +40,11 @@ def perl-debug -params 1.. %{ perl %{
   my $first_param = $ARGV[0];
   debug "first param: $first_param";
   foreach my $arg (@ARGV){
-    debug "param: $arg\n";
+    debug "param: $arg";
   }
 } %arg{@} }
+
+# executes the server in the background
+eval %sh{ 
+  nohup perl "$kak_config/rc/oyster/server.pl" >/dev/null 2>&1 & 
+}
