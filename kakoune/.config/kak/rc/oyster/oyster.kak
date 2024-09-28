@@ -34,17 +34,13 @@ def perl -params 1.. %{
     }
 }
 
-# > example usage of oyster.kak
-# > debugs parameters passed to this command
-def perl-debug -params 1.. %{ perl %{
-  my $first_param = $ARGV[0];
-  debug "first param: $first_param";
-  foreach my $arg (@ARGV){
-    debug "param: $arg";
-  }
-} %arg{@} }
-
 # executes the server in the background
 eval %sh{ 
-  nohup perl "$kak_config/rc/oyster/server.pl" >/dev/null 2>&1 & 
+  perl "$kak_config/rc/oyster/server.pl" >/dev/null 2>&1 &
 }
+
+# kills server on exit
+hook global KakEnd .* %{
+    perl %{ print 'kak_oyster_exit'; }
+}
+
