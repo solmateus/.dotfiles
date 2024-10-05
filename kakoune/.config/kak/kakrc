@@ -89,7 +89,6 @@ hook -once global KakBegin .* %{ load "rc/buffers.kak" }
 # ┆   ed.                                                     ┆
 # ┆ ! requires 'xsel'                                         ┆
 # ╰───────────────────────────────────────────────────────────╯
-# > Loads mappings module.
 hook -once global KakBegin .* %{ load "rc/mappings.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
@@ -115,6 +114,13 @@ hook -once global KakBegin .* %{ load "rc/dragx.kak" }
 # ┆ : Fork of h-youhei/kakoune-surround.kak                   ┆
 # ╰───────────────────────────────────────────────────────────╯
 hook -once global KakBegin .* %{ load "rc/selsur.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Popup : rc/popup.kak                                    │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Popup integrated terminal.                              ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global KakBegin .* %{ load "rc/popup/popup.kak" }
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Themes : rc/themes.kak                                  │

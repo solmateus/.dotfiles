@@ -13,11 +13,6 @@
 map -docstring "yanks to system clipboard" global normal 'Y' \
   "<a-|>xsel --input --clipboard<ret><a-;>:echo 'yanked selections to system clipboard'<ret>"
 
-unmap global normal q
-unmap global normal Q
-map global normal q z
-map global normal Q Z
-
 # ╭───────────────────────────────────────────────────────────╮
 # │ > Insert                                                  │
 # ╰───────────────────────────────────────────────────────────╯
@@ -84,19 +79,15 @@ map -docstring "write/quit current buffer"        global user 'w' \
   ":write<ret>"
 map -docstring "write/quit current buffer"        global user 'q' \
   ":write-quit<ret>"
-map -docstring "buffers..."                       global user 'b' \
-  ':b '
-map -docstring "force delete current/all buffers" global user 'd' \
-  ":delete-buffer<ret>"
-map -docstring "force delete current/all buffers" global user 'D' \
-  ":delete-buffer!<ret>"
-map -docstring "format buffer"                    global user 'f' \
-  ":try %{lsp-formatting-sync}<ret>"
+map -docstring "file/buffer picker"               global user 'f' \
+  ":pop-file-picker<ret>"
+map -docstring "file/buffer picker"               global user 'F' \
+  ":pop-buffer-picker<ret>"
 map -docstring "yank/paste with system clipboard" global user 'y' \
   '<a-|> xsel --input --clipboard <ret>'
 map -docstring "yank/paste with system clipboard" global user 'p' \
   '<a-!> xsel --output --clipboard <ret>'
-map -docstring "open kakrc"                       global user '1' \
+map -docstring "open kakrc"                       global user '.' \
   ":e ~/.config/kak/kakrc<ret>"
 
 # ╭───────────────────────────────────────────────────────────╮
@@ -111,10 +102,15 @@ map -docstring "delete buffer"       global buffer d \
 map -docstring "force delete buffer" global buffer D \
   ":db!<ret>"
 
+map -docstring "go to previous/next buffer" global buffer p \
+  ":bp<ret>"
+map -docstring "go to previous/next buffer" global buffer n \
+  ":bn<ret>"
+
 # ╭───────────────────────────────────────────────────────────╮
 # │ > LSP                                                     │
 # ╰───────────────────────────────────────────────────────────╯
-map -docstring "open lsp"                        global normal z     \
+map -docstring "open lsp"                        global normal q     \
   ":enter-user-mode lsp<ret>" 
 map -docstring 'Select next snippet placeholder' global insert <tab> \
   '<a-;>:try lsp-snippets-select-next-placeholders catch %{ execute-keys -with-hooks <lt>tab> }<ret>' 
