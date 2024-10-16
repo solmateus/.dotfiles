@@ -24,6 +24,9 @@
 # ├───────────────────────────────────────────────────────────┤
 # ┆ $ kakoune                                                 ┆
 # ┆ $ xsel                                                    ┆
+# ┆ $ socat                                                   ┆
+# ┆ $ cargo kak-tree-sitter                                   ┆
+# ┆ $ cargo ktsctl                                            ┆
 # ╰───────────────────────────────────────────────────────────╯
 
 # > Alias for sourcing files relative to '.config/kak/'.
@@ -79,7 +82,7 @@ hook -once global KakBegin .* %{ load "rc/qol.kak" }
 # ┆ : Adds useful buffer commands and options.                ┆
 # ╰───────────────────────────────────────────────────────────╯
 hook -once global KakBegin .* %{ load "rc/buffers.kak" }
- 
+
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ Mappings : rc/mappings.kak                              │
 # ├───────────────────────────────────────────────────────────┤
