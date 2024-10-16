@@ -1,5 +1,2 @@
 # IGNORE
-plugins/plug.kak
-plugins/kakoune-lsp
-plugins/.build
-plugins/popup.kak
+plugins
