@@ -24,9 +24,12 @@
 # ├───────────────────────────────────────────────────────────┤
 # ┆ $ kakoune                                                 ┆
 # ┆ $ xsel                                                    ┆
+# ┆ $ fzf                                                     ┆
+# ┆ $ bat                                                     ┆
 # ┆ $ socat                                                   ┆
 # ┆ $ cargo kak-tree-sitter                                   ┆
 # ┆ $ cargo ktsctl                                            ┆
+# ┆ $ cargo kak-popup                                         ┆
 # ╰───────────────────────────────────────────────────────────╯
 
 # > Alias for sourcing files relative to '.config/kak/'.
