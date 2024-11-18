@@ -17,7 +17,7 @@ decl str sol_use_tree_sitter             true
 decl bool sol_autoloadrc                 false
 
 # : sets tab width to provided number 
-decl int  sol_tab_width                   2
+decl int  sol_tab_width                   4
 
 # : disables assistant
 decl bool sol_disable_clippy              true

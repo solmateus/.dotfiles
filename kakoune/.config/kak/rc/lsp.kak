@@ -12,8 +12,8 @@ plug "kakoune-lsp/kakoune-lsp" do %{
 # > lsp languages
 hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|fish) %{
   lsp-enable-window
-  lsp-inlay-diagnostics-enable global
-  lsp-inlay-hints-enable global  
+  #lsp-inlay-diagnostics-enable global
+  #lsp-inlay-hints-enable global  
 }
 
 # >> (c)

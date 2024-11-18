@@ -100,7 +100,7 @@ hook global InsertCompletionShow .* %{
         hook -once -always window InsertCompletionHide .* %{
             unmap window insert <tab> <c-n>
             unmap window insert <s-tab> <c-p>
-            #unmap window insert <esc> <c-o>
+            # unmap window insert <esc> <c-o>
             unmap window insert <c-q> <c-o>
         }
     }
