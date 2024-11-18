@@ -16,7 +16,6 @@ map -docstring "yanks to system clipboard" global normal 'Y' \
 # ╭───────────────────────────────────────────────────────────╮
 # │ > Insert                                                  │
 # ╰───────────────────────────────────────────────────────────╯
-
 map -docstring "undo/redo"                       global insert <c-y> "<a-;>u"
 map -docstring "undo/redo"                       global insert <a-y> "<a-;>U"
 map -docstring "move cursor left/right"          global insert <c-f> "<esc>li"
@@ -89,6 +88,18 @@ map -docstring "yank/paste with system clipboard" global user 'p' \
   '<a-!> xsel --output --clipboard <ret>'
 map -docstring "open kakrc"                       global user '.' \
   ":e ~/.config/kak/kakrc<ret>"
+map -docstring "open kakoune config rc file..."   global user '>' \
+  ":e ~/.config/kak/rc/"
+map -docstring "rust mode..."                     global user 'r' \
+  ":enter-user-mode rust<ret>"
+
+declare-user-mode rust
+map -docstring "run" global rust 'r' \
+  ":popup --title 'cargo-run' %%{ cargo run; read }<ret>"
+map -docstring "build" global rust 'b' \
+  ":popup --title 'cargo-build' %%{ cargo build; read }<ret>"
+map -docstring "check" global rust 'c' \
+  ":popup --title 'cargo-check' %%{ cargo check --color=always 2> /tmp/cargo-check.err; cat /tmp/cargo-check.err | less -r; rm /tmp/cargo-check.err }<ret>" 
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ > Buffer                                                  │
@@ -112,7 +123,7 @@ map -docstring "go to previous/next buffer" global buffer n \
 # ╰───────────────────────────────────────────────────────────╯
 map -docstring "open lsp"                        global normal q     \
   ":enter-user-mode lsp<ret>" 
-map -docstring 'Select next snippet placeholder' global insert <tab> \
+map -docstring 'Select next snippet placeholder' global insert <c-n> \
   '<a-;>:try lsp-snippets-select-next-placeholders catch %{ execute-keys -with-hooks <lt>tab> }<ret>' 
 map -docstring "LSP any symbol"                  global object a     \
   "<a-;>lsp-object<ret>" 
@@ -130,8 +141,6 @@ map -docstring "LSP errors"                      global object D     \
 # ╭───────────────────────────────────────────────────────────╮
 # │ > NORMAL                                                  │
 # ╰───────────────────────────────────────────────────────────╯
-# > 'y' copies selections to system clipboard through 'xsel'.
-
 # > '<esc>' calls qol escape command
 map global insert <esc> "<a-;>:escape<ret>"
 map global normal <esc> "<a-;>:escape<ret>"
