@@ -3,7 +3,7 @@
 # ├───────────────────────────────────────────────────────────┤
 # ┆ : Customizable rulers for kakoune.                        ┆
 # ╰───────────────────────────────────────────────────────────╯
-face global RulersRow "default,default,default+u"
+face global RulersRow "default,default,default+ug"
 face global RulersCol "default,default,default+r"
 face global RulersSpc "default,default,default+r"
 
@@ -26,4 +26,4 @@ perl %{
   
 } %opt{sol_highlight_current_line} %opt{sol_highlight_current_column} %opt{sol_highlight_special_column}
 
-rulers-update
+hook global WinCreate .* %{ rulers-update }
