@@ -10,10 +10,10 @@ plug "kakoune-lsp/kakoune-lsp" do %{
 }
 
 # > lsp languages
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|fish) %{
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp|fish|lua) %{
   lsp-enable-window
-  #lsp-inlay-diagnostics-enable global
-  #lsp-inlay-hints-enable global  
+  lsp-inlay-diagnostics-enable global
+  lsp-inlay-hints-enable global  
 }
 
 # >> (c)
@@ -59,6 +59,16 @@ hook global WinSetOption filetype=javascript %{
 
 # >> (fish)
 hook global WinSetOption filetype=fish %{
+  hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
+  hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
+  hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
+  hook -once -always window WinSetOption filetype=.* %{
+    remove-hooks window semantic-tokens
+  }
+}
+
+# >> (fish)
+hook global WinSetOption filetype=lua %{
   hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
   hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
   hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens

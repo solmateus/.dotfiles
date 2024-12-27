@@ -136,7 +136,6 @@ perl %{
   if ($ARGV[0] eq "true") { kak "hook_constant_write" }
 } %opt{sol_constant_write}
 
-
 #    : highlight kakoune aliases
 try %~
   add-highlighter shared/kakrc/code/addhl regex '(?:\s|\A)\Kaddhl(?:(?=\s)|\z)' 0:keyword
@@ -146,4 +145,5 @@ try %~
   add-highlighter shared/kakrc/code/set   regex '(?:\s|\A)\Kset(?:(?=\s)|\z)'   0:keyword
   add-highlighter shared/kakrc/code/decl  regex '(?:\s|\A)\Kdecl(?:(?=\s)|\z)'  0:keyword
   add-highlighter shared/kakrc/code/load  regex '(?:\s|\A)\Kload(?:(?=\s)|\z)'  0:keyword
+  add-highlighter shared/kakrc/code/exec  regex '(?:\s|\A)\Kexec(?:(?=\s)|\z)'  0:keyword
 ~

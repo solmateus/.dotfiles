@@ -134,3 +134,11 @@ hook -once global KakBegin .* %{ load "rc/popup/popup.kak" }
 # ┆ : Main logic for themes.                                  ┆
 # ╰───────────────────────────────────────────────────────────╯
 hook -once global WinCreate .* %{ load "rc/themes.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ Keep-History: rc/keep-history.kak                       │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Saves command history.                                  ┆
+# ┆ : Fork of Screwtapello/kakoune-state-save.kak             ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global KakBegin .* %{ load "rc/keep-history.kak" }

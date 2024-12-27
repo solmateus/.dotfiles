@@ -78,6 +78,8 @@ map -docstring "write/quit current buffer"        global user 'w' \
   ":write<ret>"
 map -docstring "write/quit current buffer"        global user 'q' \
   ":write-quit<ret>"
+map -docstring "terminal"                         global user 't' \
+  ":popup --title 'terminal' %%{ fish }<ret>"
 map -docstring "file/buffer picker"               global user 'f' \
   ":pop-file-picker<ret>"
 map -docstring "file/buffer picker"               global user 'F' \
