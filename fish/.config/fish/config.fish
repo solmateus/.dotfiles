@@ -15,7 +15,7 @@ set -g fish_greeting
 
 alias hx helix
 alias clear 'echo ">>> use <ctrl-l>"'
-alias ask tgpt
+alias ai fabric
 
 set --erase --global FZF_DEFAULT_OPTS
 
