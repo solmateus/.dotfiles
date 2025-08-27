@@ -1,0 +1,39 @@
+[package]
+name = "openkey"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+openrgb2 = "*"
+tokio = { version = "1", features = ["full"] }
+hex_color = "*"
+
+[profile.release]
+# Optimization level (0-3, s, z). 3 is the default for release.
+# `s` for size, `z` for smallest size (may sacrifice some performance).
+opt-level = 3
+
+# Link Time Optimization (LTO). Can significantly reduce binary size and improve performance,
+# but increases link time. "fat" is generally recommended for release.
+# Options: false, true, "thin", "fat".
+lto = "fat"
+
+# Number of parallel code generation units. Setting to 1 maximizes optimization
+# but increases compile time. Default is typically higher for faster builds.
+codegen-units = 1
+
+# Whether to include debug information in the release build.
+# Set to `true` if you want to be able to debug the optimized release binary.
+# Default is `false`.
+debug = false
+
+# How panics are handled. "unwind" (default) allows unwinding the stack,
+# "abort" immediately terminates the process. "abort" results in smaller binaries
+# because it doesn't need to include unwinding machinery.
+panic = "unwind" # or "abort"
+
+# Whether to strip symbols from the binary.
+# 'true' strips all symbols. 'debuginfo' strips non-debug symbols.
+# 'none' (default) doesn't strip anything.
+# This requires Rust 1.59+
+strip = true # or true

@@ -13,6 +13,11 @@
 map -docstring "yanks to system clipboard" global normal 'Y' \
   "<a-|>xsel --input --clipboard<ret><a-;>:echo 'yanked selections to system clipboard'<ret>"
 
+map -docstring "(un)comment line" global normal '#' ":comment-line<ret>"
+
+map -docstring "add new line below" global normal '<ret>' "o<esc>"
+map -docstring "add new line above" global normal '<a-ret>' "O<esc>"
+
 # ╭───────────────────────────────────────────────────────────╮
 # │ > Insert                                                  │
 # ╰───────────────────────────────────────────────────────────╯

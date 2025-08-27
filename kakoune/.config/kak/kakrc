@@ -27,9 +27,13 @@
 # ┆ $ fzf                                                     ┆
 # ┆ $ bat                                                     ┆
 # ┆ $ socat                                                   ┆
+# ┆ $ tmux*                                                   ┆
 # ┆ $ cargo kak-tree-sitter                                   ┆
 # ┆ $ cargo ktsctl                                            ┆
 # ┆ $ cargo kak-popup                                         ┆
+# ┆                                                           ┆ 
+# ┆ * tmux is not needed to be in use, but it must be         ┆
+# ┆     installed in your system so kak-popup works.          ┆
 # ╰───────────────────────────────────────────────────────────╯
 
 # > Alias for sourcing files relative to '.config/kak/'.
@@ -142,3 +146,11 @@ hook -once global WinCreate .* %{ load "rc/themes.kak" }
 # ┆ : Fork of Screwtapello/kakoune-state-save.kak             ┆
 # ╰───────────────────────────────────────────────────────────╯
 hook -once global KakBegin .* %{ load "rc/keep-history.kak" }
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ @ HexColors: rc/colorizer.kak                             │
+# ├───────────────────────────────────────────────────────────┤
+# ┆ : Colorizes hexadecimal color codes in the file.          ┆
+# ┆ : Examples: #ff0000 #00ff00 #0000ff #ff2266               ┆
+# ╰───────────────────────────────────────────────────────────╯
+hook -once global KakBegin .* %{ load "rc/colorizer.kak" }

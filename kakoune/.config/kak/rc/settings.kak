@@ -5,16 +5,16 @@
 # ╰───────────────────────────────────────────────────────────╯
 
 # : use custom solthemes instead of plain colorscheme
-decl bool sol_use_solthemes              true
+decl bool sol_use_solthemes               true
 
 # : sets theme from themes/ folder.
-decl str theme                           "catastrophy"
+decl str theme                            "catastrophy"
 
 # : starts kak-tree-sitter with kakoune
-decl str sol_use_tree_sitter             true
+decl str sol_use_tree_sitter              true
 
 # : attempts to autoload every file in the rc directory
-decl bool sol_autoloadrc                 false
+decl bool sol_autoloadrc                  false
 
 # : sets tab width to provided number 
 decl int  sol_tab_width                   4

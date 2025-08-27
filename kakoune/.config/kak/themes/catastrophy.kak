@@ -1,31 +1,38 @@
 # ╭───────────────────────────────────────────────────────────╮
 # │ @ CatAstrophe Theme : CatAstrophe.kak                     │
 # ├───────────────────────────────────────────────────────────┤
-# ┆ : Beautifyl theme with pretty and saturated colors.       ┆
+# ┆ : Beautiful theme with pretty and saturated colors.       ┆
 # ┆ : Meow!                                               >:3 ┆
 # ╰───────────────────────────────────────────────────────────╯
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ > Settings                                                │
+# ╰───────────────────────────────────────────────────────────╯
+
+# : use openrgb to change keyboard led colors?
+declare-option bool sol_use_openrgb false
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ > Colors                                                  │
 # ╰───────────────────────────────────────────────────────────╯
 # : boring straight colors
-decl str _black  "0F1014"
-decl str _gray3  "1c1e20"
-decl str _gray2  "2c2e30"
-decl str _gray1  "959695"
-decl str _gray   "c4c7c5"
-decl str _white  "fefefe"
+decl str _black  "0F1014" #0f1014
+decl str _gray3  "1c1e20" #1c1e20
+decl str _gray2  "2c2e30" #2c2e30
+decl str _gray1  "959695" #959695
+decl str _gray   "c4c7c5" #c4c7c5
+decl str _white  "fefefe" #fefefe
 
 # : cool gay colors
-decl str _red    "cb333a"
-decl str _dred   "d8595f"
-decl str _green  "188743"
-decl str _dgreen "3d9b61"
-decl str _yellow "faa821"
-decl str _blue   "3870ed"
-decl str _dblue  "7ea4f8"
-decl str _teal   "007F7F"
-decl str _pink   "dc25b6"
+decl str _red    "cb333a" #cb333a
+decl str _dred   "d8595f" #d8595f
+decl str _green  "188743" #188743
+decl str _dgreen "3d9b61" #3d9b61
+decl str _yellow "faa821" #faa821
+decl str _blue   "3870ed" #3870ed
+decl str _dblue  "7ea4f8" #7ea4f8
+decl str _teal   "007F7F" #007f7f
+decl str _pink   "dc25b6" #dc25b6
 
 # ╭───────────────────────────────────────────────────────────╮
 # │ > Settings                                                │
@@ -81,6 +88,12 @@ decl str    SolInsertTag                 "{rgb:%opt{_black},rgb:%opt{SolInsertAc
 # ╰───────────────────────────────────────────────────────────╯
 # : applies normal colors
 def theme-apply-normal-colors %{
+  # : apply openrgb theme
+  nop %sh{
+      if [ "$kak_opt_sol_use_openrgb" ]; then
+          nohup ~/.config/kak/themes/debounce-openrgb.sh "set #0000FF" >/dev/null 2>&1 &
+      fi
+  }
   # : line number cursor
   face global LineNumberCursor          SolLineNumberCursorNormal
   # : primary cursor
@@ -101,6 +114,12 @@ def theme-apply-normal-colors %{
 
 # : applies insert colors
 def theme-apply-insert-colors %{
+  # : apply openrgb theme
+  nop %sh{
+      if [ "$kak_opt_sol_use_openrgb" ]; then
+          nohup ~/.config/kak/themes/debounce-openrgb.sh "set #00FF00" >/dev/null 2>&1 &
+      fi
+  }
   # : line number cursor
   face global LineNumberCursor          SolLineNumberCursorInsert
   # : primary cursor
@@ -122,6 +141,12 @@ def theme-apply-insert-colors %{
 
 # : applies prompt colors
 def theme-apply-prompt-colors %{
+  # : apply openrgb theme
+  nop %sh{
+      if [ "$kak_opt_sol_use_openrgb" ]; then
+          nohup ~/.config/kak/themes/debounce-openrgb.sh "set #FF0000" >/dev/null 2>&1 &
+      fi
+  }
   # : line number cursor
   face global LineNumberCursor          SolLineNumberCursorPrompt
   # : primary cursor
@@ -336,3 +361,28 @@ face global RulersSpc "default,rgb:%opt{_gray3},default"
 # │ : Starts on normal mode colors.                           │
 # ╰───────────────────────────────────────────────────────────╯
 theme-apply-normal-colors
+
+# ╭───────────────────────────────────────────────────────────╮
+# │ : Keyboard socket listener cleanup.                       │
+# ╰───────────────────────────────────────────────────────────╯
+# Starts the socket listener. For more information do `rgbk --help`.
+
+declare-option -hidden bool rgbk_daemon_started false
+
+evaluate-commands %sh{
+    if [ "$kak_opt_rgbk_daemon_started" = "false" ] && [ "$kak_opt_use_openrgb" = "true" ]; then
+        echo "set-option global rgbk_daemon_started true"
+        nohup ./.config/kak/themes/rgbk >/dev/null 2>&1 &
+    fi
+
+}
+
+# Ends the socket listener on exit.
+hook global KakEnd .* %{
+    evaluate-commands %sh{
+        if [ "$kak_opt_rgbk_daemon_started" = "true" ] && [ "$kak_opt_use_openrgb" = "true" ]; then
+          echo "set purple" | socat - UNIX-CONNECT:/tmp/rgbk.sock
+          echo "exit" | socat - UNIX-CONNECT:/tmp/rgbk.sock
+		fi
+    }
+}
